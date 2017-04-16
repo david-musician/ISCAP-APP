@@ -1,4 +1,5 @@
-angular.module('starter.controllers', [])
+/* global angular $location */
+angular.module('ISCAP.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -39,10 +40,45 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+  
+  // Redirect the use once logged in
+  /*
+  $scope.redirect = function() {
+    try {
+      $window.location.href = 'templates/welcome.html';
+      console.log("User is logged in!");
+    } catch(err) {
+      console.log(err);
+    }
+  };
+  */
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
+.controller('LoginCtrl', function($scope, $http, $log) {
+
+  $scope.onLoginButtonClick = function() {
+
+    var postData = {
+
+      "password": $scope.password,
+      "username": $scope.username
+    };
+
+    $http.post('#/iscap/welcome', postData)
+      .success(function(data) {
+        console.log("SUCCESS");
+        console.log("Username: " + $scope.username + "   -   Password: " + $scope.password);
+        $location.path("iscap/welcome");
+      })
+      .error(function(data) {
+        console.log("ERROR");
+      });
+
+  };
+})
+
+.controller('SessionsCtrl', function($scope) {
+  $scope.sessions = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
@@ -52,5 +88,5 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('SessionsCtrl', function($scope, $stateParams) {
 });

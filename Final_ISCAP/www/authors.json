@@ -1,0 +1,29 @@
+[
+    {
+        "id" : 0,
+        "firstname" : "Daniel",
+        "lastname" : "Maratta",
+        "class" : "CIDM4385",
+        "score" : 0,
+        "questionsAsked": 0,
+        "grade" : "n/a"
+    },
+    {
+        "id" : 1,
+        "firstname" : "Samantha",
+        "lastname" : "Hallows",
+        "class" : "DHYG2301",
+        "score" : 0,
+        "questionsAsked": 0,
+        "grade" : "n/a"
+    },
+    {
+        "id" : 2,
+        "firstname" : "Andrew",
+        "lastname" : "Camacho",
+        "class" : "CIDM2315",
+        "score" : 0,
+        "questionsAsked": 0,
+        "grade" : "n/a"
+    }
+]
