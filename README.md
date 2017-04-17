@@ -77,7 +77,7 @@ Mockups:
         },
         "bio": {
             "type": "string"
-        }
+        },
         "events": {
             "type": "array"
         }
@@ -99,7 +99,7 @@ Mockups:
         },
         "paperDuration": {
             "type": "string"
-        }
+        },
         "paperRoom": {
             "type": "string"
         },
@@ -166,7 +166,7 @@ Mockups:
 }
 
 {
-    "title": "Abstract"
+    "title": "Abstract",
     "type": "object",
     "properties": {
         "abstractTitle": {
@@ -191,8 +191,8 @@ Mockups:
 }
 
 {
-    "title": "Vendor"
-    "type": "object"
+    "title": "Vendor",
+    "type": "object",
     "properties": {
         "vendorTitle": {
             "type": "string"
@@ -213,8 +213,8 @@ Mockups:
 }
 
 {
-    "title": "Meal"
-    "type": "object"
+    "title": "Meal",
+    "type": "object",
     "properties": {
         "mealDayTime": {
             "type": "string"
