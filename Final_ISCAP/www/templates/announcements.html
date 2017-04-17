@@ -14,6 +14,18 @@
       <a href="#/iscap/thread" class="item item-icon-left">
         <i class="icon ion-document-text"></i> Announcement!
       </a>
+      <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="announcement in announcements" type="item-text-wrap" href="#/tab/announcment/{{announcement.id}}">
+        <img ng-src="{{announcement.face}}">
+        <h2>{{announcement.name}}</h2>
+        <p>{{announcement.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(announcement)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
     </div>
   </ion-content>
 </ion-view>

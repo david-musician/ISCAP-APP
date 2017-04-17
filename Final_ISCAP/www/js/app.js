@@ -6,7 +6,8 @@
 // 'ISCAP' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'ISCAP.controllers' is found in controllers.js
-angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
+// 'ISCAP.services' is found in services.js
+angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -103,7 +104,18 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
     url: '/announcements',
     views: {
       'menuContent': {
-        templateUrl: 'templates/announcements.html'
+        templateUrl: 'templates/announcements.html',
+        controller: 'AnnouncementsCtrl'
+      }
+    }
+  })
+  /* This needs to be fixed */
+  .state('iscap.announcement-detail', {
+    url: '/announcements/:announcementId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/announcement-detail.html',
+        controller: 'AnnouncementDetailCtrl'
       }
     }
   })
@@ -177,11 +189,11 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
     /* End left menu*/
     
     /* Begin right menu */
-    .state('iscap.profile', {
-      url: '/profile',
+    .state('iscap.account', {
+      url: '/account',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile.html' 
+          templateUrl: 'templates/account.html' 
         }
       }
     })
