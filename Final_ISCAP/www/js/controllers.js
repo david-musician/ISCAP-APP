@@ -1,4 +1,4 @@
-/* global angular $state */
+/* global angular */
 angular.module('ISCAP.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicNavBarDelegate) {
@@ -12,6 +12,8 @@ angular.module('ISCAP.controllers', [])
 
   // Form data for the login modal
   $scope.loginData = {};
+
+  $scope.username = "Person";
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
