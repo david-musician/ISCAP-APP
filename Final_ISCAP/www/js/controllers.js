@@ -1,7 +1,7 @@
-/* global angular $location */
+/* global angular $state */
 angular.module('ISCAP.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicNavBarDelegate) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -41,6 +41,8 @@ angular.module('ISCAP.controllers', [])
     }, 1000);
   };
   
+  $ionicNavBarDelegate.showBackButton(false);
+  
   // Redirect the use once logged in
   /*
   $scope.redirect = function() {
@@ -54,14 +56,19 @@ angular.module('ISCAP.controllers', [])
   */
 })
 
-.controller('LoginCtrl', function($scope, $http, $log) {
+/* Login controller, currently broken
+.controller('LoginCtrl', function($scope, $http, $log, $state) {
 
-  $scope.onLoginButtonClick = function() {
+  $scope.login = function() {
+    
+    
+    $state.go("welcome");
+    /*
 
     var postData = {
 
-      "password": $scope.password,
-      "username": $scope.username
+      "username": $scope.username,
+      "password": $scope.password
     };
 
     $http.post('#/iscap/welcome', postData)
@@ -73,9 +80,11 @@ angular.module('ISCAP.controllers', [])
       .error(function(data) {
         console.log("ERROR");
       });
+      * /
 
   };
 })
+*/
 
 .controller('SessionsCtrl', function($scope) {
   $scope.sessions = [

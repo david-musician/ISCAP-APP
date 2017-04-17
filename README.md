@@ -1,7 +1,7 @@
 # ISCAP Mobile Application
   These projects will be created using Angular 1
 
-**Github Repo name:** SP17_Angularjs
+**Github Repo:** https://github.com/david-musician/ISCAP-APP
 
 4/15/2017 - Project Created
 
@@ -20,6 +20,7 @@ This ISCAP mobile application will be used to allow users
 
 [How to start an Ionic project in c9](https://github.com/ahuimanu/cidm4385-2016sp-ionic-basics)
 
+
 ## readme.md format
 
 ### Body
@@ -32,6 +33,10 @@ This ISCAP mobile application will be used to allow users
 ### Helpful links
 1. Links that help explain the project
 2. Links that helped solve problems in the project
+
+[How to redirect user after login](https://forum.ionicframework.com/t/after-login-is-successful-how-to-redirect-to-home-page/11208)
+
+[How to log in users in Ionic 1](https://devdactic.com/user-auth-angularjs-ionic/)
 
 ### Known issues
 #### Learned how to create and push to a Github branch:

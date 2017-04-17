@@ -24,6 +24,40 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
   });
 })
 
+/* 
+ * Once user authentication and roles are working we will use this instead of
+ * the above .run code:
+
+.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS) {
+  $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+    if (!AuthService.isAuthenticated()) {
+      console.log(next.name);
+      if (next.name !== 'outside.login' && next.name !== 'outside.register') {
+        event.preventDefault();
+        $state.go('outside.login');
+      }
+    }
+  });
+  
+  $ionicPlatform.ready(function() {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+      // Don't remove this line unless you know what you are doing. It stops the viewport
+      // from snapping when text inputs are focused. Ionic handles this internally for
+      // a much nicer keyboard experience.
+      cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+
+ */
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   /* Parent state */
@@ -56,24 +90,70 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
   })
 
   /* Begin left menu */
-  .state('iscap.search', {
-    url: '/search',
+  .state('iscap.events', {
+    url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/events.html'
       }
     }
   })
 
-  .state('iscap.browse', {
-    url: '/browse',
+  .state('iscap.announcements', {
+    url: '/announcements',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html'
+        templateUrl: 'templates/announcements.html'
       }
     }
   })
   
+  .state('iscap.directory', {
+    url: '/directory',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/directory.html'
+      }
+    }
+  })
+  
+  .state('iscap.maps', {
+    url: '/maps',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/maps.html'
+      }
+    }
+  })
+  
+  .state('iscap.lostandfound', {
+    url: '/lostandfound',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/lostandfound.html'
+      }
+    }
+  })
+  
+  .state('iscap.faq', {
+    url: '/faq',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/faq.html'
+      }
+    }
+  })
+  
+  .state('iscap.thread', {
+    url: '/thread',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/thread.html'
+      }
+    }
+  })
+  
+  /*
   .state('iscap.sessions', {
     url: '/sessions',
     views: {
@@ -93,6 +173,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
       }
     }
   })
+  */
     /* End left menu*/
     
     /* Begin right menu */
@@ -100,7 +181,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
       url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/login.html' 
+          templateUrl: 'templates/profile.html' 
         }
       }
     })
@@ -116,5 +197,5 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers'])
   /* End right menu */
   
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/iscap/login-init');
+  $urlRouterProvider.otherwise('/iscap/welcome');
 });
