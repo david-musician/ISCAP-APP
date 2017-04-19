@@ -1,0 +1,75 @@
+<p class="text-center"><img src="{{wsc.google_static_maps_url}}" /></p>
+<br>
+<p><b>Your selected city's latitude:</b> {{wsc.selected_lat}}</p>
+<p><b>Your selected city's longitude:</b> {{wsc.selected_lon}}</p>
+<br>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-condensed">
+            <tr>
+                <td>
+                    <span class="label label-info">Current Conditions:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_summary}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-info">Report Time:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_observation_time | date : 'medium'}}</span>
+                </td>
+            </tr>
+            <tr ng-show="wsc.fahrenheitTemp">
+                <td>
+                    <span class="label label-info">Temperature:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_temperature}}&#8457;</span>
+                </td>
+            </tr>
+            <tr ng-show="wsc.celsiusTemp">
+                <td>
+                    <span class="label label-info">Temperature:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_celsius}}&#8451;</span>
+                </td>
+            </tr>
+            <tr ng-show="wsc.fahrenheitDewpoint">
+                <td>
+                    <span class="label label-info">Dewpoint:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_dewpoint}}&#8457;</span>
+                </td>
+            </tr>
+            <tr ng-show="wsc.celsiusDewpoint">
+                <td>
+                    <span class="label label-info">Dewpoint:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_dpcelsius}}&#8451;</span>
+                </td>
+            </tr>
+            <tr ng-show="wsc.windMPH">
+                <td>
+                    <span class="label label-info">Wind Bearing and Speed:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_windSpeed}} mph at {{wsc.ds_windBearing}}&deg;</span>
+                </td>
+            </tr>
+            <tr ng-show="wsc.windKnots">
+                <td>
+                    <span class="label label-info">Wind Bearing and Speed:</span>
+                </td>
+                <td>
+                    <span class="badge">{{wsc.ds_windSpeed}} knots at {{wsc.ds_windBearing}}&deg;</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

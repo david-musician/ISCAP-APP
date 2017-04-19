@@ -133,7 +133,8 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/maps',
     views: {
       'menuContent': {
-        templateUrl: 'templates/maps.html'
+        templateUrl: 'templates/maps.html',
+        /*controller: 'WeatherServiceController'*/
       }
     }
   })

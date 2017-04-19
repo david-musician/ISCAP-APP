@@ -1,6 +1,24 @@
 <ion-view view-title="Maps">
   <ion-content class="padding">
-    <p>Brief Weather Information Here</p>
+		<h1 class="text-center">Brief Weather Information Here</h1>
+		<br><br>
+		<div class="form-group">
+			</p>
+            <p>Select a city:
+                <select ng-model="wsc.selected_city"
+                      	ng-options="city.name for city in wsc.cities"
+                      	class="dropdown"></select>
+            </p>
+			<input type="text" style="form-control">
+			<br><br>
+			<div class="text-center">
+				<button class="btn btn-info"
+						ng-click="getLatLonForSelected()">Get the weather!
+				</button>
+			</div>
+		</div>
+		<br>
+    <my-conditions></my-conditions>
     <button class="button button-balanced">Directions to Conference</button>
     <br><br>
     <button class="button button-balanced">Nearby Attractions and Restaurants</button>
