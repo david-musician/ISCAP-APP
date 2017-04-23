@@ -1,0 +1,81 @@
+/* Begin Calendar */
+{
+    "title": "Calendar",
+    "events": [
+        {
+            "eventTitle": {
+                "type": "string"
+            },
+            "eventStartDate": {
+                "type": "string"
+            },
+            "eventEndDate": {
+                "type": "string"
+            },
+            "eventStartTime": {
+                "type": "string"
+            },
+            "eventEndTime": {
+                "type": "string"
+            },
+            "eventDescription": {
+                "type": "string"
+            }
+        }
+    ]
+}
+
+/* Moneer's Idea */
+
+{
+    "title": "Calendar",
+    "type": "object",
+    {
+    "eventTitle": 
+        {
+            "eventTitle": {
+                "type": "string"
+            },
+            "eventStartDate": {
+                "type": "string"
+            },
+            "eventEndDate": {
+                "type": "string"
+            },
+            "eventStartTime": {
+                "type": "string"
+            },
+            "eventEndTime": {
+                "type": "string"
+            },
+            "eventDescription": {
+                "type": "string"
+            }
+        },
+    "eventTitle2": 
+        {
+            "eventTitle": {
+                "type": "string"
+            },
+            "eventStartDate": {
+                "type": "string"
+            },
+            "eventEndDate": {
+                "type": "string"
+            },
+            "eventStartTime": {
+                "type": "string"
+            },
+            "eventEndTime": {
+                "type": "string"
+            },
+            "eventDescription": {
+                "type": "string"
+            }
+        }
+    
+        
+    }
+}
+
+/* END MONEER'S CODE */

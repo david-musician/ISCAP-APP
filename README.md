@@ -63,168 +63,80 @@ Mockups:
 
 ```json
 {
-    "title": "Author",
-    "type": "object",
-    "properties": {
-        "firstname": {
-            "type": "string"
-        },
-        "lastname": {
-            "type": "string"
-        },
-        "midinit": {
-            "type": "string"
-        },
-        "bio": {
-            "type": "string"
-        },
-        "events": {
-            "type": "array"
-        }
-    }
-}
+    "Schedule": [{
+        "eventId": "",
+        "eventType": "",
+        "mealType": "Breakfast",
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "room": "CC205",
+        "chair": "Mickey Mouse",
+        "subjectArea": "",
+        "eventTitle": "The Land Before Twitter",
+        "date": "",
+        "Presenter": [{
+            "firstName": "",
+            "lastName": "",
+            "affiliation": ""
+        }, {
+            "firstName": "",
+            "lastName": "",
+            "affiliation": ""
+        }],
+        "customLabel": "Board Meeting",
+        "note": ""
+    }],
 
-{
-    "title": "Paper",
-    "type": "object",
-    "properties": {
-        "paperTitle": {
-            "type": "string"
-        },
-        "paperSubject": {
-            "type": "string"
-        },
-        "paperDayTime": {
-            "type": "string"
-        },
-        "paperDuration": {
-            "type": "string"
-        },
-        "paperRoom": {
-            "type": "string"
-        },
-        "paperAuthor": {
-            "type": "object"
-        }
-    }
-}
+    "Save": [{
+        "eventId": "",
+        "eventType": "",
+        "mealType": "Breakfast",
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "room": "CC205",
+        "chair": "Mickey Mouse",
+        "subjectArea": "",
+        "eventTitle": "The Land Before Twitter",
+        " date": "",
+        "Presenter": [{
+            "firstName": "",
+            "lastName": "",
+            "affiliation": ""
+        }, {
+            "firstName ": "",
+            "lastName": "",
+            "affiliation": ""
+        }],
+        "customLabel": "Board Meeting",
+        "note": ""
+    }],
 
-{
-    "title": "Workshop",
-    "type": "object",
-    "properties": {
-        "workshopTitle": {
-            "type": "string"
-        },
-        "workshopSubject": {
-            "type": "string"
-        },
-        "workshopDayTime": {
-            "type": "string"
-        },
-        "workshopDuration":{
-            "type": "string"
-        },
-        "workshopRoom": {
-            "type": "string"
-        },
-        "workshopPaper": {
-            "type": "array"
-        },
-        "workshopAuthor": {
-            "type": "array"
-        }
-    }
-}
+    "message": [{
+        "messageId": "",
+        "title": "",
+        "messageText": "",
+        "dateTime": "",
+        "category": "",
+        "photo": "",
+        "link": ""
+    }],
 
-{
-    "title": "Panel",
-    "type": "object",
-    "properties": {
-        "panelTitle": {
-            "type": "string"
-        },
-        "panelSubject": {
-            "type": "string"
-        },
-        "panelDayTime": {
-            "type": "string"
-        },
-        "panelDuration": {
-            "type": "string"
-        },
-        "panelRooms": {
-            "type": "array"
-        },
-        "panelPaper": {
-            "type": "array"
-        },
-        "panelAuthor": {
-            "type": "array"
-        }
-    }
-}
-
-{
-    "title": "Abstract",
-    "type": "object",
-    "properties": {
-        "abstractTitle": {
-            "type": "string"
-        },
-        "abstractAuthor": {
-            "type": "array"
-        },
-        "abstractDayTime": {
-            "type": "string"
-        },
-        "abstractDuration": {
-            "type": "string"
-        },
-        "abstractRoom": {
-            "type": "string"
-        },
-        "abstractVendor": {
-            "type": "object"
-        }
-    }
-}
-
-{
-    "title": "Vendor",
-    "type": "object",
-    "properties": {
-        "vendorTitle": {
-            "type": "string"
-        },
-        "vendorAuthor": {
-            "type": "array"
-        },
-        "vendorDayTime": {
-            "type": "string"
-        },
-        "vendorRoom": {
-            "type": "string"
-        },
-        "vendorAbstract": {
-            "type": "array"
-        }
-    }
-}
-
-{
-    "title": "Meal",
-    "type": "object",
-    "properties": {
-        "mealDayTime": {
-            "type": "string"
-        },
-        "mealDuration": {
-            "type": "string"
-        },
-        "mealRoom": {
-            "type": "string"
-        }
+    "Other": {
+        "announcement": [{
+            "messageId": [{
+                "messageId": ""
+            }, {
+                "messageId": ""
+            }, {
+                "messageId": ""
+            }],
+            "title": "",
+            "messageText": "",
+            "dateTime": "",
+            "category": "",
+            "photo": "",
+            "link": ""
+        }]
     }
 }
 
