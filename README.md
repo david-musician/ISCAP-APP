@@ -187,6 +187,7 @@ user authorization and roles are confirmed working.
 * [How to redirect user after login](https://forum.ionicframework.com/t/after-login-is-successful-how-to-redirect-to-home-page/11208)
 * [How to log in users in Ionic 1](https://devdactic.com/user-auth-angularjs-ionic/)
 * [How to create and push to a Github branch:](http://stackoverflow.com/questions/1519006/how-do-you-create-a-remote-git-branch)
+* [CSS Dropdowns](http://jsfiddle.net/thurstanh/emtAm/2/)
 
 ### Known issues
 1. User authentication does not quite work. Need to debug
@@ -194,15 +195,14 @@ user authorization and roles are confirmed working.
 
 
 ### TODO:
-1. Implement calendar and formatting for Events
+1. Connect to Firebase
 2. Implement maps, searching, and directions. Google Maps API, and ionic cards
 3. Implement search and sort on appropriate views
-4. Implement list for directory (ng-repeat)
+4. Implement list for directory (ng-repeat) - **in progress**
 5. Implement role-based announcements/comments (ng-repeat, CRUD operations)
-6. Implement contact form for Lost and Found (contact form)
-7. Implement list for FAQ (ng-repeat)
+6. Implement contact form for Lost and Found (contact form) - **in progress**
+7. Implement list for FAQ (ng-repeat) - **in progress**
 8. Implement social media links (simple images and hyperlinks)
-9. Fix user login (need to debug server)
-10. Implement user roles (view tutorials)
-11. Implement profile page, including setting picture
-12. Connect to Firebase
+9. Implement user roles (view tutorials)
+10. Implement profile page, including setting picture
+11. Implement calendar and formatting for Events

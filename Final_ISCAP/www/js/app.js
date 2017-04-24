@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'ISCAP.controllers' is found in controllers.js
 // 'ISCAP.services' is found in services.js
-angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
+angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
