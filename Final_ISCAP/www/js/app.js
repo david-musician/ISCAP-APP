@@ -32,7 +32,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
   .state('iscap', {
     url: '/iscap',
     abstract: true,
-    templateUrl: 'views/menu.html',
+    templateUrl: 'views/menu/menu.html',
     controller: 'AppCtrl'
   })
   
@@ -41,7 +41,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/login-init',
     views: {
       'menuContent': {
-        templateUrl: 'views/login-init.html',
+        templateUrl: 'views/login/login-init.html',
         controller: 'LoginCtrl'
       }
     }
@@ -52,7 +52,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/welcome',
     views: {
       'menuContent': {
-        templateUrl: 'views/welcome.html'
+        templateUrl: 'views/welcome/welcome.html'
       }
     }
   })
@@ -62,7 +62,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'views/events.html'
+        templateUrl: 'views/events/events.html'
         //controller: 'CalendarController'
       }
     }
@@ -72,27 +72,47 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/announcements',
     views: {
       'menuContent': {
-        templateUrl: 'views/announcements.html',
+        templateUrl: 'views/announcements/announcements.html',
         controller: 'AnnouncementsCtrl'
       }
     }
   })
-  /* This needs to be fixed */
   .state('iscap.announcement-detail', {
     url: '/announcements/:announcementId',
     views: {
       'menuContent': {
-        templateUrl: 'views/announcement-detail.html',
+        templateUrl: 'views/announcements/announcement-detail.html',
         controller: 'AnnouncementDetailCtrl'
       }
     }
   })
   
+  /*
+  .state('iscap.thread', {
+    url: '/thread',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/announcements/thread.html'
+      }
+    }
+  })
+  */
+  
   .state('iscap.directory', {
     url: '/directory',
     views: {
       'menuContent': {
-        templateUrl: 'views/directory.html'
+        templateUrl: 'views/directory/directory.html'
+        //controller: 'DirectoryCtrl'
+      }
+    }
+  })
+  .state('iscap.directory-detail', {
+    url: '/directory/:listingId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/directory/directory-detail.html'
+        //controller: 'DirectoryDetailCtrl'
       }
     }
   })
@@ -101,7 +121,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/maps',
     views: {
       'menuContent': {
-        templateUrl: 'views/maps.html',
+        templateUrl: 'views/maps/maps.html',
         /*controller: 'WeatherServiceController'*/
       }
     }
@@ -111,7 +131,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/lostandfound',
     views: {
       'menuContent': {
-        templateUrl: 'views/lostandfound.html'
+        templateUrl: 'views/lostandfound/lostandfound.html'
       }
     }
   })
@@ -120,16 +140,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/faq',
     views: {
       'menuContent': {
-        templateUrl: 'views/faq.html'
-      }
-    }
-  })
-  
-  .state('iscap.thread', {
-    url: '/thread',
-    views: {
-      'menuContent': {
-        templateUrl: 'views/thread.html'
+        templateUrl: 'views/faq/faq.html'
       }
     }
   })
@@ -162,7 +173,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
       url: '/account',
       views: {
         'menuContent': {
-          templateUrl: 'views/account.html' 
+          templateUrl: 'views/account/account.html' 
         }
       }
     })
@@ -171,7 +182,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'views/login.html' 
+        templateUrl: 'views/login/login.html' 
       }
     }
   });

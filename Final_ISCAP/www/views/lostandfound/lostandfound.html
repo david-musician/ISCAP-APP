@@ -1,0 +1,18 @@
+<ion-view view-title="Lost and Found">
+  <ion-content class="padding">
+    <h1>Lost and Found</h1>
+    <p>You will receive a notification once your item is found</p>
+    <form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input type="text" required [(ngModel)]="todo.title" ngControl="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea [(ngModel)]="todo.description" ngControl="description"></ion-textarea>
+      </ion-item>
+      <br><br>
+      <button ion-button type="submit" class="button button-balanced" block>Submit</button>
+    </form>
+  </ion-content>
+</ion-view>

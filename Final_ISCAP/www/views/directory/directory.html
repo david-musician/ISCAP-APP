@@ -10,17 +10,17 @@
     </label>
     <!--
     <br>
-    <img ng-src="{{announcement.face}}" style="width: 64px; height: 64px">
+    <img ng-src="{{listing.face}}" style="width: 64px; height: 64px">
     <p>
       {{directory.lastText}}
     </p>-->
-    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="announcement in announcements" type="item-text-wrap" href="#/iscap/announcements/{{announcement.id}}">
-        <img ng-src="{{announcement.face}}">
-        <h2>{{announcement.name}}</h2>
-        <p>{{announcement.lastText}}</p>
+    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="listing in listings" type="item-text-wrap" href="#/iscap/announcements/{{listing.id}}">
+        <img ng-src="{{listing.face}}">
+        <h2>{{listing.name}}</h2>
+        <p>{{listing.lastText}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
-        <ion-option-button class="button-assertive" ng-click="remove(announcement)">
+        <ion-option-button class="button-assertive" ng-click="remove(listing)">
           Delete
         </ion-option-button>
       </ion-item>

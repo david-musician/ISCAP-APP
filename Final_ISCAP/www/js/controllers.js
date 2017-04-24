@@ -16,7 +16,7 @@ angular.module('ISCAP.controllers', [])
   $scope.username = "Person";
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('views/login.html', {
+  $ionicModal.fromTemplateUrl('views/login/login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -121,9 +121,23 @@ angular.module('ISCAP.controllers', [])
   $scope.announcement = Announcements.get($stateParams.announcementId);
 })
 
+/* Begin Directory */
+.controller('DirectoryCtrl', function($scope, Listings) {
+  $scope.listings = Listings.all();
+  $scope.remove = function(listing) {
+    Listings.remove(listing);
+  };
+})
+
+.controller('DirectoryDetailCtrl', function($scope, $stateParams, Listings) {
+  $scope.listing = Listings.get($stateParams.listingId);
+})
+/* End Directory */
+
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
-    enableNotifications: true
+    enableNotifications: true,
+    enableBio: false
   };
 })
 
@@ -304,6 +318,6 @@ angular.module('ISCAP.controllers', [])
         scope: true,
         
         //Reference the template url
-        templateUrl: $sce.trustAsResourceUrl('views/currentConditions.html')
+        templateUrl: $sce.trustAsResourceUrl('views/maps/currentConditions.html')
     };
 }]);
