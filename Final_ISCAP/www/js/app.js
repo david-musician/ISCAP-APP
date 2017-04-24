@@ -32,7 +32,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
   .state('iscap', {
     url: '/iscap',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'views/menu.html',
     controller: 'AppCtrl'
   })
   
@@ -41,7 +41,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/login-init',
     views: {
       'menuContent': {
-        templateUrl: 'templates/login-init.html',
+        templateUrl: 'views/login-init.html',
         controller: 'LoginCtrl'
       }
     }
@@ -52,7 +52,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/welcome',
     views: {
       'menuContent': {
-        templateUrl: 'templates/welcome.html'
+        templateUrl: 'views/welcome.html'
       }
     }
   })
@@ -62,7 +62,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'templates/events.html'
+        templateUrl: 'views/events.html'
         //controller: 'CalendarController'
       }
     }
@@ -72,7 +72,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/announcements',
     views: {
       'menuContent': {
-        templateUrl: 'templates/announcements.html',
+        templateUrl: 'views/announcements.html',
         controller: 'AnnouncementsCtrl'
       }
     }
@@ -82,7 +82,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/announcements/:announcementId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/announcement-detail.html',
+        templateUrl: 'views/announcement-detail.html',
         controller: 'AnnouncementDetailCtrl'
       }
     }
@@ -92,7 +92,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/directory',
     views: {
       'menuContent': {
-        templateUrl: 'templates/directory.html'
+        templateUrl: 'views/directory.html'
       }
     }
   })
@@ -101,7 +101,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/maps',
     views: {
       'menuContent': {
-        templateUrl: 'templates/maps.html',
+        templateUrl: 'views/maps.html',
         /*controller: 'WeatherServiceController'*/
       }
     }
@@ -111,7 +111,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/lostandfound',
     views: {
       'menuContent': {
-        templateUrl: 'templates/lostandfound.html'
+        templateUrl: 'views/lostandfound.html'
       }
     }
   })
@@ -120,7 +120,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/faq',
     views: {
       'menuContent': {
-        templateUrl: 'templates/faq.html'
+        templateUrl: 'views/faq.html'
       }
     }
   })
@@ -129,7 +129,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/thread',
     views: {
       'menuContent': {
-        templateUrl: 'templates/thread.html'
+        templateUrl: 'views/thread.html'
       }
     }
   })
@@ -139,7 +139,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/sessions',
     views: {
       'menuContent': {
-        templateUrl: 'templates/sessions.html',
+        templateUrl: 'views/sessions.html',
         controller: 'SessionsCtrl'
       }
     }
@@ -149,7 +149,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/sessions/:sessionId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/session.html',
+        templateUrl: 'views/session.html',
         controller: 'SessionCtrl'
       }
     }
@@ -162,7 +162,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
       url: '/account',
       views: {
         'menuContent': {
-          templateUrl: 'templates/account.html' 
+          templateUrl: 'views/account.html' 
         }
       }
     })
@@ -171,7 +171,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'templates/login.html' 
+        templateUrl: 'views/login.html' 
       }
     }
   });

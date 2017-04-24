@@ -16,7 +16,7 @@ angular.module('ISCAP.controllers', [])
   $scope.username = "Person";
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('views/login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -49,7 +49,7 @@ angular.module('ISCAP.controllers', [])
   /*
   $scope.redirect = function() {
     try {
-      $window.location.href = 'templates/welcome.html';
+      $window.location.href = 'views/welcome.html';
       console.log("User is logged in!");
     } catch(err) {
       console.log(err);
@@ -304,6 +304,6 @@ angular.module('ISCAP.controllers', [])
         scope: true,
         
         //Reference the template url
-        templateUrl: $sce.trustAsResourceUrl('templates/currentConditions.html')
+        templateUrl: $sce.trustAsResourceUrl('views/currentConditions.html')
     };
 }]);
