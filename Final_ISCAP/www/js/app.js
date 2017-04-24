@@ -63,6 +63,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services'])
     views: {
       'menuContent': {
         templateUrl: 'templates/events.html'
+        //controller: 'CalendarController'
       }
     }
   })

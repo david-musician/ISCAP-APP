@@ -10,5 +10,31 @@
     <p>
       {{announcement.lastText}}
     </p>
+    <label class="item item-input item-stacked-label">
+	    <textarea>
+	    </textarea>
+    </label>
+    <br>
+    <button class="button button-balanced">Comment</button>
+    <br><br>
+    <div class="list">
+      <div class="item item-icon-left">
+        <i class="icon ion-key"></i> Yeah!
+        <p>
+          <button ng-click="openPopover($event)">Open Popover</button>
+        </p>
+
+        <script id="my-popover.html" type="text/ng-template">
+          <ion-popover-view>
+            <ion-header-bar>
+              <h1 class="title">My Popover Title</h1>
+            </ion-header-bar>
+            <ion-content>
+              Hello!
+            </ion-content>
+          </ion-popover-view>
+        </script>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

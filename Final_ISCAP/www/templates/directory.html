@@ -4,9 +4,26 @@
     <p>Use ng-repeat to insert a list of authors, board members, the CEO, and 
     other individuals (perhaps even fellow members). Categorize into groups, add
     search and sort functions.</p>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search">
+    </label>
+    <!--
+    <br>
     <img ng-src="{{announcement.face}}" style="width: 64px; height: 64px">
     <p>
       {{directory.lastText}}
-    </p>
+    </p>-->
+    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="announcement in announcements" type="item-text-wrap" href="#/iscap/announcements/{{announcement.id}}">
+        <img ng-src="{{announcement.face}}">
+        <h2>{{announcement.name}}</h2>
+        <p>{{announcement.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(announcement)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
