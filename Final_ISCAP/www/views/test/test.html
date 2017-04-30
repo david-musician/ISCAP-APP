@@ -1,0 +1,9 @@
+<ion-view view-title="Test">
+    <ion-content class="padding">
+        <div ng-controller="testappController as tac">
+            Temperature at {{tac.selected_city.id}} is {{tac.selected_city.weather.temperature}}
+            <br>
+            Pressure: {{tac.selected_city.weather.pressure}}
+        </div>
+    </ion-content>
+</ion-view>

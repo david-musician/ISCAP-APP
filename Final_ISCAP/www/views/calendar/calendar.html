@@ -1,0 +1,60 @@
+<ion-view view-title="Events">
+    <ion-content class="padding">
+        <a href="http://breimer.sienacs.com/#schedule">Look here for reference</a>
+        <a href="http://csbapp.uncw.edu/edSig/agenda/daily.aspx">Actual schedule</a>
+        <br>
+
+        <!--Search Bar-->
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Search" ng-model="test">
+        </label>
+
+        <!--Event Creator-->
+        <section id="directives-calendar" ng-controller="CalendarController">
+            <div class="well">
+
+                <br>
+                
+                <div class="btn-group calTools">
+                    <button type="button"
+                            class="btn btn-primary"
+                            ng-click="addEvent()"> Add Event</button>
+                </div>
+
+                <!--list events that are requested in the search bar-->
+                <div class="list">
+                    <a class="item item-avatar" ng-cloak ng-if="test" ng-repeat="e in events | filter:test">
+
+                        <button class="input-button button button-icon ion-close-circled" ng-click="remove($index)"></button>
+                        <b><label class="item item-input"> <input ng-model="e.title" type="text"></label></b>
+                        </br>
+                        {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
+                    </a>
+                </div>
+
+
+                <!--Selected Event Message-->
+                <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
+                    <h4>{{alertMessage}}</h4>
+                </div>
+
+                <!--calendar buttons-->
+                <div class="btn-toolbar">
+                    <p class="pull-right lead">Calendar View Options</p>
+                    <div class="btn-group">
+                        <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar1')">Day</button>
+                        <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar1')">Week</button>
+                        <button class="btn btn-success" ng-click="changeView('month', 'myCalendar1')">Month</button>
+                    </div>
+                </div>
+                </br>
+
+                <!--actual calendar-->
+                <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+            </div>
+
+        </section>
+        <br><br>
+    </ion-content>
+</ion-view>

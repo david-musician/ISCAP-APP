@@ -1,7 +1,7 @@
 <ion-view view-title="My Account">
   <ion-content class="padding">
-    <h1>Account</h1>
     <p>insert profile picture and stuff here</p>
+    <img ng-src="{{settings.pfp}}" alt="This is a picture">
     <ion-list>
       <ion-toggle  ng-model="settings.enableNotifications">
           Enable Notifications
@@ -11,7 +11,7 @@
       </ion-toggle>
     	<label class="item item-input item-stacked-label">
   	    <textarea name="bio" id="bio-textarea" 
-            			ng-model="settings.something">
+            			ng-model="settings.bio">
       	</textarea>
       </label>
     </ion-list>

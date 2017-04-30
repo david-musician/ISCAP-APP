@@ -139,39 +139,6 @@ Mockups:
         }]
     }
 }
-
-```
-
-We will be using the following code for .run instead of the current version once
-user authorization and roles are confirmed working.
-```javascript
-.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS) {
-  $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
-    if (!AuthService.isAuthenticated()) {
-      console.log(next.name);
-      if (next.name !== 'outside.login' && next.name !== 'outside.register') {
-        event.preventDefault();
-        $state.go('outside.login');
-      }
-    }
-  });
-  
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
-})
 ```
 
 ### Helpful links
@@ -193,16 +160,23 @@ user authorization and roles are confirmed working.
 1. User authentication does not quite work. Need to debug
 2. User roles need to be implemented
 
+### Big Todos:
+1. Announcement Board
+2. Calendar
+3. User Authentication/Roles
+4. Push Notifications
 
 ### TODO:
-1. Connect to Firebase
+1. Connect to Firebase - **Done!**
 2. Implement maps, searching, and directions. Google Maps API, and ionic cards
 3. Implement search and sort on appropriate views
 4. Implement list for directory (ng-repeat) - **in progress**
 5. Implement role-based announcements/comments (ng-repeat, CRUD operations)
 6. Implement contact form for Lost and Found (contact form) - **in progress**
 7. Implement list for FAQ (ng-repeat) - **in progress**
-8. Implement social media links (simple images and hyperlinks)
+8. Implement social media links (simple images and hyperlinks) - **Done!**
 9. Implement user roles (view tutorials)
 10. Implement profile page, including setting picture
 11. Implement calendar and formatting for Events
+
+Firebase

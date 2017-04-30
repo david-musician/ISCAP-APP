@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    
+    <title>ISCAP</title>
 
     <link rel="manifest" href="manifest.json">
 
@@ -20,34 +21,49 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
+    
     <!-- bluebird polyfill -->
     <script src="lib/bluebird.min.js"></script>  
-
+    
+    <!-- STYLESHEETS -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <!-- Global css file, currently unused -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+    
+    <!-- View-Specific Stylesheets -->
     <link href="views/faq/faq-style.css" rel="stylesheet">
+    <link href="views/menu/menu-style.css" rel="stylesheet">
 
     <!-- Google Maps API key (REMOVE THIS!!!!): AIzaSyBr_g9mus7VHd0EE1IW5FZPMqNvY3JbdJw -->
 
-    <!-- Firebase setup -->
-    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-messaging.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
     
+    <!-- Load Calendar Dependencies  -->
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <!-- jquery, moment, and angular have to get included before fullcalendar -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+    
+    <!-- AngularFire -->    
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.js"></script>    
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script>
       // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCfRGNlNEjM-iodzW_FCLryp1UJfAeaz4g",
-        authDomain: "iscap-2127e.firebaseapp.com",
-        databaseURL: "https://iscap-2127e.firebaseio.com",
-        projectId: "iscap-2127e",
-        storageBucket: "iscap-2127e.appspot.com",
-        messagingSenderId: "802032967576"
-      };
       /* global firebase */
+      var config = {
+        apiKey: "AIzaSyBz0bUMoSwej2ovpBqONVQNut7YYoxgCyU",
+        authDomain: "iscap1-f6eae.firebaseapp.com",
+        databaseURL: "https://iscap1-f6eae.firebaseio.com",
+        projectId: "iscap1-f6eae",
+        storageBucket: "iscap1-f6eae.appspot.com",
+        messagingSenderId: "542283887421"
+      };
       firebase.initializeApp(config);
     </script>
     
@@ -58,13 +74,27 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- your app's js -->
+    <!-- App js -->
     <script src="js/app.js"></script>
+    
+    <!-- Directives -->
+    <script src="/common/directives/app-footer/app-footer.directive.js"></script>
+    
+    <!-- View-Specific js -->
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
-    <script src="views/events/calendar.js"></script>
+    <script src="views/calendar/calendar.js"></script>
+    
+    <!--
+    <script src="views/account/accountCtrl.js"></script>
+    <script src="views/announcements/announcementsCtrl.js"></script>
+    <script src="views/directory/directoryCtrl.js"></script>
+    <script src="views/calendar/calendarCtrl.js"></script>
+    <script src="views/"></script>
+    -->
     
     <!-- Google Maps API -->
+    
     <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>-->
   </head>
 

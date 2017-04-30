@@ -19,7 +19,11 @@
     <br><br>
     <div class="list">
       <div class="item item-icon-left">
-        <i class="icon ion-key"></i> Yeah!
+        <img ng-src="{{settings.pfp}}" alt="This is a picture"> Yeah!<i class="icon comment-settings ion-android-more-vertical"></i>
+        
+        <!-- The following button should open up a popover that will allow the 
+        user to be able to edit, delete, or view the comment details. -->
+        
         <p>
           <button ng-click="openPopover($event)">Open Popover</button>
         </p>

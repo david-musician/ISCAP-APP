@@ -58,6 +58,8 @@ angular.module('ISCAP.controllers', [])
   */
 })
 
+/* BEGIN CONTROLLERS */
+
 /* Login controller, currently broken
 .controller('LoginCtrl', function($scope, $http, $log, $state) {
 
@@ -137,7 +139,9 @@ angular.module('ISCAP.controllers', [])
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableNotifications: true,
-    enableBio: false
+    enableBio: false,
+    bio: 'This is an important bio. Because it\'s about me',
+    pfp: 'img/profile-icon.png'
   };
 })
 
@@ -256,6 +260,7 @@ angular.module('ISCAP.controllers', [])
 
         
 }])
+
 .factory('GoogleGeolocationService', ['$sce', '$http', 
     function($sce, $http){
         //https://docs.angularjs.org/api/ng/service/$sce
@@ -276,7 +281,7 @@ angular.module('ISCAP.controllers', [])
             return $http.get(trustedurl);
         };
         
-        return geolocationService;            
+        return geolocationService;
         
     }])
 .factory('DarkSkyWeatherService',['$sce', '$http', 
@@ -320,4 +325,14 @@ angular.module('ISCAP.controllers', [])
         //Reference the template url
         templateUrl: $sce.trustAsResourceUrl('views/maps/currentConditions.html')
     };
-}]);
+}])
+
+.controller('footerCtrl', ['$scope', function($scope) {
+  $scope.date = new Date();
+}])
+
+.directive('appFooter', function() {
+  return {
+    templateUrl: '/common/directives/app-footer/app-footer.html'
+  };
+});

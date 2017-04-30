@@ -26,8 +26,8 @@
         <ion-item menu-close href="#/iscap/welcome">
           Welcome
         </ion-item>
-        <ion-item menu-close href="#/iscap/events">
-          Events
+        <ion-item menu-close href="#/iscap/calendar">
+          Calendar
         </ion-item>
         <ion-item menu-close href="#/iscap/announcements">
           Announcements
@@ -44,6 +44,13 @@
         <ion-item menu-close href="#/iscap/faq">
           FAQ
         </ion-item>
+        <br>
+        <div class="padding text-center social-icons">&nbsp;&nbsp;
+          <a class="link-no-style" href="https://www.facebook.com/"><i class="icon ion-social-facebook"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+          <a class="link-no-style" href="https://twitter.com/"><i class="icon ion-social-twitter"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+          <a class="link-no-style" href="https://plus.google.com/"><i class="icon ion-social-googleplus"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+          <a class="link-no-style" href="http://iscap.info/"><i class="icon ion-ios-world"></i></a>&nbsp;&nbsp;
+        </div>
       </ion-list>
     </ion-content>
   </ion-side-menu>
@@ -57,7 +64,7 @@
           My Account
         </ion-item>
         <ion-item menu-close ng-click="login()">
-          Logout
+          Logout <!-- Make this an ng-if -->
         </ion-item>
       </ion-list>
     </ion-content>
