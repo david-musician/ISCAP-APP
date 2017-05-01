@@ -1,9 +1,22 @@
 <ion-view view-title="ISCAP - Welcome">
   <ion-content class="padding">
     <div class="welcome">
-      <h1>Welcome, {{username}}!</h1>
-      <p>Welcome to the ISCAP mobile app!</p>
+      <div class="center">
+        <h1>Welcome to ISCAP,</h1>
+        <h2>{{username}}</h2>
+      </div>
+      <!-- Image from http://res.publicdomainfiles.com/pdf_view/82/13938365416588.png -->
+      <img src="img/globe.png" width="200">
+      <!-- Image from https://upload.wikimedia./org/wikipedia/commons/thumb/a/ae/Earth_2.jpg/1280px-Earth_2.jpg --
+      <img src="img/earth.jpg" width="100%">-->
     </div>
-    <appFooter></appFooter>
+    <div class="push"></div>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title>
+          <app-footer class="app-footer-stlye"></app-footer>
+        </ion-title>
+      </ion-toolbar>
+    </ion-footer>
   </ion-content>
 </ion-view>

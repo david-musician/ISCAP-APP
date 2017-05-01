@@ -1,1 +1,22 @@
-/* Empty. Add your own CSS if you like */
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+.app-footer-style {
+    height: 142px; /* .push must be the same height as .footer */
+    margin-left: auto;
+    margin-right: auto;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

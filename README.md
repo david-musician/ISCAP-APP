@@ -12,6 +12,11 @@ The rest of the features of the ISCAP app have been broken down according to
 their corresponding menu links.
 
 ### Features
+1. Push Notifications
+
+    **Attention Babb use a curl command to push**
+
+    ```curl --header "Authorization: key=PUT API KEY HERE" --header "Content-Type: application/json" -d '{ "to": "PUT CLIENT TOKEN HERE", "data": { "status": "It works"}}' https://fcm.googleapis.com/fcm/send```
 
 #### Menu:
 * **Events:** Schedule/Calendar ([View this site for reference](http://breimer.sienacs.com/#schedule))
@@ -157,8 +162,13 @@ Mockups:
 * [CSS Dropdowns](http://jsfiddle.net/thurstanh/emtAm/2/)
 
 ### Known issues
-1. User authentication does not quite work. Need to debug
+1. User authentication needs to be implemented
 2. User roles need to be implemented
+
+### Changelog:
+1. Implemented a searchable calendar
+2. Implemented an app-footer directive
+3. Implemented social media links
 
 ### Big Todos:
 1. Announcement Board
@@ -169,14 +179,12 @@ Mockups:
 ### TODO:
 1. Connect to Firebase - **Done!**
 2. Implement maps, searching, and directions. Google Maps API, and ionic cards
-3. Implement search and sort on appropriate views
+3. Implement search and sort on appropriate views - **in progress**
 4. Implement list for directory (ng-repeat) - **in progress**
 5. Implement role-based announcements/comments (ng-repeat, CRUD operations)
 6. Implement contact form for Lost and Found (contact form) - **in progress**
 7. Implement list for FAQ (ng-repeat) - **in progress**
-8. Implement social media links (simple images and hyperlinks) - **Done!**
-9. Implement user roles (view tutorials)
-10. Implement profile page, including setting picture
-11. Implement calendar and formatting for Events
+8. Implement user roles (view tutorials)
+9. Implement profile page, including setting picture
 
 Firebase

@@ -44,7 +44,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
     views: {
       'menuContent': {
         templateUrl: 'views/login/login-init.html',
-        controller: 'LoginCtrl'
+        //controller: 'LoginCtrl'
       }
     }
   })
@@ -103,7 +103,7 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
     views: {
       'menuContent': {
         templateUrl: 'views/test/test.html',
-        controller: 'testappController'
+        //controller: 'testappController'
       }
     }
   })
@@ -152,7 +152,8 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
     url: '/lostandfound',
     views: {
       'menuContent': {
-        templateUrl: 'views/lostandfound/lostandfound.html'
+        templateUrl: 'views/lostandfound/lostandfound.html',
+        controller: 'SampleCtrl'
       }
     }
   })
@@ -216,32 +217,31 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
 // Retrieve Firebase Messaging object.
 /* global firebase */
       const messaging = firebase.messaging();
-      var database = firebase.database();
+      //var database = firebase.database();
       messaging.requestPermission()
       .then(function() {
-        console.log('Notification permission granted.')
+        console.log('Notification permission granted.');
         // TODO(developer): Retrieve an Instance ID token for use with FCM.
         // ...
         return messaging.getToken();
       })
       .then(function(token){
-        console.log(token)
-        firebase.database().ref().set({
-          //user: name,
+        console.log(token);
+        firebase.database().ref('Other/token').set({
           token: token
         });
         //currentToken = token
       })
       .catch(function(err) {
-        console.log('Unable to get permission to notify.', err)
-      })
+        console.log('Unable to get permission to notify.', err);
+      });
       /*.then(function(currentToken) {
         firebase.database().ref('users/' + userId).set({
           user: name,
           token: token
       });*/
       messaging.onMessage(function(payload){
-        console.log('onMessage: ', payload)
+        console.log('onMessage: ', payload);
       });
       
       

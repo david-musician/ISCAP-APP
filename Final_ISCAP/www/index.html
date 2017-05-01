@@ -27,8 +27,8 @@
     
     <!-- STYLESHEETS -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <!-- Global css file, currently unused -->
-    <!--<link href="css/style.css" rel="stylesheet">-->
+    <!-- Global CSS -->
+    <link href="css/style.css" rel="stylesheet">
     
     <!-- View-Specific Stylesheets -->
     <link href="views/faq/faq-style.css" rel="stylesheet">
@@ -49,23 +49,27 @@
     <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
     <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
     
-    <!-- AngularFire -->    
-    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.js"></script>    
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script>
       // Initialize Firebase
-      /* global firebase */
       var config = {
-        apiKey: "AIzaSyBz0bUMoSwej2ovpBqONVQNut7YYoxgCyU",
-        authDomain: "iscap1-f6eae.firebaseapp.com",
-        databaseURL: "https://iscap1-f6eae.firebaseio.com",
-        projectId: "iscap1-f6eae",
-        storageBucket: "iscap1-f6eae.appspot.com",
-        messagingSenderId: "542283887421"
+        apiKey: "AIzaSyCfRGNlNEjM-iodzW_FCLryp1UJfAeaz4g",
+        authDomain: "iscap-2127e.firebaseapp.com",
+        databaseURL: "https://iscap-2127e.firebaseio.com",
+        projectId: "iscap-2127e",
+        storageBucket: "iscap-2127e.appspot.com",
+        messagingSenderId: "802032967576"
       };
       firebase.initializeApp(config);
     </script>
+    
+    <!-- FirebaseUI --
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.css" />
+    -->
     
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -100,5 +104,6 @@
 
   <body ng-app="ISCAP">
     <ion-nav-view></ion-nav-view>
+
   </body>
 </html>

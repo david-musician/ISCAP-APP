@@ -4,7 +4,7 @@ angular.module('ISCAP.services', [])
 .factory('Announcements', function() {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
+  // Test data
   var announcements = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -51,9 +51,7 @@ angular.module('ISCAP.services', [])
 })
 
 .factory('Directory', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
+  // Test data
   var listings = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -82,7 +80,7 @@ angular.module('ISCAP.services', [])
     id: 4,
     name: 'Mike Harrington',
     description: 'Chairman',
-    biography: 'Love ice cream',
+    biography: 'I Love ice cream',
     face: 'img/mike.png'
   }];
 
@@ -102,4 +100,30 @@ angular.module('ISCAP.services', [])
       return null;
     }
   };
+})
+
+.factory('Account', function(){
+  var profile = {
+    id: 0,
+    firstName: 'First',
+    lastName: 'Last',
+    username: 'jhadams@iscap.info',
+    biography: 'Sample Bio',
+    pfp: 'img/profile-icon.png'
+  };
+  
+  return profile;
+  /*{
+    all: function() {
+      return profile;
+    },
+    get: function(profileId) {
+      for (var i = 0; i < profile.length; i++) {
+        if (profile[i].id === parseInt(profile)) {
+          return profile[i];
+        }
+      }
+      return null;
+    }
+  };*/
 })

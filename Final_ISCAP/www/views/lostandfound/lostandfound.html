@@ -14,5 +14,29 @@
       <br><br>
       <button ion-button type="submit" class="button button-balanced" block ng-click="function()">Submit</button>
     </form>
+    
+    <div>
+      <ul>
+        <li ng-repeat="message in messages">
+          <!-- edit a message -->
+          <input ng-model="message.text" ng-change="messages.$save(message)" />
+          <!-- delete a message -->
+          <button ng-click="messages.$remove(message)">Delete Message</button>
+        </li>
+      </ul>
+      <!-- push a new message onto the array -->
+      <form ng-submit="addMessage()">
+        <input ng-model="newMessageText" />
+        <button type="submit">Add Message</button>
+      </form>
+    </div>
+    
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title>
+          <app-footer class="app-footer-stlye"></app-footer>
+        </ion-title>
+      </ion-toolbar>
+    </ion-footer>
   </ion-content>
 </ion-view>

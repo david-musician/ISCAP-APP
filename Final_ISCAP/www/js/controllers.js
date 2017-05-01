@@ -1,7 +1,7 @@
-/* global angular */
+/* global angular firebase */
 angular.module('ISCAP.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicNavBarDelegate) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicNavBarDelegate, $http) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -26,6 +26,22 @@ angular.module('ISCAP.controllers', [])
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
+  
+  
+  $scope.pushNotification = function() {
+     $http({
+            url:'https://fcm.googleapis.com/fcm/send/segments?appkey=AAAAfkKjcz0:APA91bE-lHMab644-_TJeVgLlyprarA_I_MhCy9XnfCbhF9J5ue8G3z_RSHi3Xyzj3lw0j65iI7-F4TPQiIfD0DO96_87OzEv19fwukDV-IvYI9SsNwwUKbKmpCgQshe7qzqHL-Bfg_c',
+            
+            method:'POST',
+            data:{"status": "It works"},
+            headers:{'Content-Type': 'application/json', 'Auth_Token': 'fKHVi_xWWm0:APA91bEP6PlLBKgpBemigHSiVsHsTmGmQFDjkKpfzpazyaSpelJSW2p62Im8_jLIT35FoZgYzTck6LIqKFaAt-_PHcComchMdi9wWRfFefi1TmfVK7ABlFxZPiQWiu6lOUeJgp5GTDB9'}
+        }).success(function(data){
+            console.log(data)
+            alert("Success");
+        });
+
+  };
+  
 
   // Open the login modal
   $scope.login = function() {
@@ -89,6 +105,43 @@ angular.module('ISCAP.controllers', [])
   };
 })
 */
+
+.controller("SampleCtrl", function($scope, $firebaseArray) {
+  /* version 1, simple call from database
+  var ref = firebase.database().ref();
+  // download the data into a local object
+  $scope.data = $firebaseObject(ref);
+  // putting a console.log here won't work
+  */
+  
+  /* version 2, 3-way binding with $firebaseObject
+  var ref = firebase.database().ref().child("data");
+  // download the data into a local object
+  var syncObject = $firebaseObject(ref);
+  // synchronize the object with a three-way data binding
+  // click on `index.html` above to see it used in the DOM!
+  syncObject.$bindTo($scope, "data");
+  */
+  
+  /* version 3, synchronized array
+  var ref = firebase.database().ref().child("messages");
+  // create a synchronized array
+  // click on `index.html` above to see it used in the DOM!
+  $scope.messages = $firebaseArray(ref);
+  */
+  
+  var ref = firebase.database().ref().child("messages");
+  // create a synchronized array
+  $scope.messages = $firebaseArray(ref);
+  // add new items to the array
+  // the message is automatically added to our Firebase database!
+  $scope.addMessage = function() {
+    $scope.messages.$add({
+      text: $scope.newMessageText
+    });
+  };
+  // click on `index.html` above to see $remove() and $save() in action
+})
 
 .controller('SessionsCtrl', function($scope) {
   $scope.sessions = [
