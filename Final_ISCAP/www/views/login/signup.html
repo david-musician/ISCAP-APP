@@ -1,0 +1,36 @@
+<ion-view>
+    <ion-header-bar>
+        <h1 class="title">Signup - ISCAP</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="padding">
+            <h1 class="text-center">Signup to ISCAP</h1>
+            <img src="img/globe.png" width="200" class="center">
+            <br>
+            <form ng-submit="doLogin()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Username</span>
+                        <input type="text" ng-model="loginData.username" onClick="this.select();">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="loginData.password" onClick="this.select();">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Confirm Password</span>
+                        <input type="password" ng-model="loginData.password" onClick="this.select();">
+                    </label>
+                    <button class="button button-block button-positive" ng-click="doSignup()">Sign up</button>
+                </div>
+            </form>
+            <ion-footer>
+                <ion-toolbar>
+                    <ion-title>
+                        <app-footer class="app-footer-stlye"></app-footer>
+                    </ion-title>
+                </ion-toolbar>
+            </ion-footer>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,25 +1,37 @@
-<ion-modal-view>
+<ion-view hide-nav-bar="true">
   <ion-header-bar>
     <h1 class="title">Login - ISCAP</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit" ng-click="">Log in</button>
-        </label>
-      </div>
-    </form>
+    <ion-nav-view name="userLogin"></ion-nav-view>
+    <div class="padding">
+      <h1 class="text-center">Welcome to ISCAP</h1>
+      <img src="img/globe.png" width="200" class="center">
+      <br>
+      <p class="rounded alert" ng-show=""><strong>Signup Successful!</strong></p>
+      <form>
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">Username</span>
+            <input type="text" ng-model="loginData.username" onClick="this.select();">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="loginData.password" onClick="this.select();">
+          </label>
+          
+          <a href="#/iscap/welcome" class="button button-block button-positive" ng-click="doLogin()">Log in</a>
+          <a href="#/login/signup" class="button button-block button-positive">Sign up</a>
+          <a href="#/login/reset" class="button button-block button-positive">Forgot password?</a>
+        </div>
+      </form>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-title>
+            <app-footer class="app-footer-stlye"></app-footer>
+          </ion-title>
+        </ion-toolbar>
+      </ion-footer>
+    </div>
   </ion-content>
-</ion-modal-view>
+</ion-view>

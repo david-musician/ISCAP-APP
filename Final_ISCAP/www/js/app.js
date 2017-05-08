@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'ISCAP.controllers' is found in controllers.js
 // 'ISCAP.services' is found in services.js
-angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'firebase', 'ui.calendar'])
+angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'firebase', 'ui.calendar', 'ionic.cloud'])
 
 // https://github.com/firebase/angularfire/blob/master/docs/quickstart.md
 
@@ -24,13 +24,39 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
   });
 })
 
 /* Configure states */
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicCloudProvider) {
+  $ionicCloudProvider.init({
+    "core": {
+      "app_id": "4eaa3ac7"
+    },
+    "push": {
+      "sender_id": "802032967576",
+      "pluginConfig": {
+        "ios": {
+          "badge": true,
+          "sound": true
+        },
+        "android": {
+          "iconColor": "#343434"
+        }
+      }
+    }
+  });
+
   $stateProvider
   /* Parent state */
+  .state('login',{
+    url: '/login',
+    abstract: true,
+    templateUrl: 'views/login/login.html',
+    controller: 'AppCtrl'
+  })
+  
   .state('iscap', {
     url: '/iscap',
     abstract: true,
@@ -39,22 +65,51 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
   })
   
   /* Initial login state */
-  .state('iscap.login-init', {
-    url: '/login-init',
+  .state('login.login', {
+    url: '/login',
     views: {
-      'menuContent': {
-        templateUrl: 'views/login/login-init.html',
+      'userLogin': {
+        templateUrl: 'views/login/login.html'
         //controller: 'LoginCtrl'
       }
     }
   })
+  
+  .state('login.signup', {
+    url: '/signup',
+    views: {
+      'userLogin': {
+        templateUrl: 'views/login/signup.html'
+      }
+    }
+  })
+  
+  .state('login.pwReset', {
+    url: '/reset',
+    views: {
+      'userLogin': {
+        templateUrl: 'views/login/pwReset.html'
+      }
+    }
+  })
+  
+  /*
+  .state('login.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/login/login.html' 
+      }
+    }
+  });
+  */
   
   /* State to display after login */
   .state('iscap.welcome', {
     url: '/welcome',
     views: {
       'menuContent': {
-        templateUrl: 'views/welcome/welcome.html'
+        templateUrl: 'views/welcome/welcome.html',
       }
     }
   })
@@ -108,17 +163,6 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
     }
   })
   
-  /*
-  .state('iscap.thread', {
-    url: '/thread',
-    views: {
-      'menuContent': {
-        templateUrl: 'views/announcements/thread.html'
-      }
-    }
-  })
-  */
-  
   .state('iscap.directory', {
     url: '/directory',
     views: {
@@ -152,8 +196,8 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
     url: '/lostandfound',
     views: {
       'menuContent': {
-        templateUrl: 'views/lostandfound/lostandfound.html',
-        controller: 'SampleCtrl'
+        templateUrl: 'views/lostandfound/lostandfound.html'
+        //controller: 'SampleCtrl'
       }
     }
   })
@@ -190,7 +234,6 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
   */
     /* End left menu*/
     
-    /* Begin right menu */
     .state('iscap.account', {
       url: '/account',
       views: {
@@ -198,87 +241,39 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
           templateUrl: 'views/account/account.html' 
         }
       }
-    })
-    
-    .state('iscap.login', {
-    url: '/login',
-    views: {
-      'menuContent': {
-        templateUrl: 'views/login/login.html' 
-      }
-    }
-  });
-  /* End right menu */
+    });
   
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/iscap/login');
+  $urlRouterProvider.otherwise('login/login');
 });
 
 // Retrieve Firebase Messaging object.
 /* global firebase */
-      const messaging = firebase.messaging();
-      //var database = firebase.database();
-      messaging.requestPermission()
-      .then(function() {
-        console.log('Notification permission granted.');
-        // TODO(developer): Retrieve an Instance ID token for use with FCM.
-        // ...
-        return messaging.getToken();
-      })
-      .then(function(token){
-        console.log(token);
-        firebase.database().ref('Other/token').set({
-          token: token
-        });
-        //currentToken = token
-      })
-      .catch(function(err) {
-        console.log('Unable to get permission to notify.', err);
-      });
-      /*.then(function(currentToken) {
-        firebase.database().ref('users/' + userId).set({
-          user: name,
-          token: token
-      });*/
-      messaging.onMessage(function(payload){
-        console.log('onMessage: ', payload);
-      });
-      
-      
-      // Get Instance ID token. Initially this makes a network call, once retrieved
-  // subsequent calls to getToken will return from cache.
-      /*messaging.getToken()
-      .then(function(currentToken, $firebase) {
-        if (currentToken) {
-          sendTokenToServer(currentToken);
-          updateUIForPushEnabled(currentToken);
-        } else {
-          // Show permission request.
-          console.log('No Instance ID token available. Request permission to generate one.');
-          // Show permission UI.
-          updateUIForPushPermissionRequired();
-          setTokenSentToServer(false);
-        }
-      })
-      .catch(function(err) {
-        console.log('An error occurred while retrieving token. ', err);
-        showToken('Error retrieving Instance ID token. ', err);
-        setTokenSentToServer(false);
-      });
-      // Callback fired if Instance ID token is updated.
-      messaging.onTokenRefresh(function() {
-        messaging.getToken()
-        .then(function(refreshedToken) {
-          console.log('Token refreshed.');
-          // Indicate that the new Instance ID token has not yet been sent to the
-          // app server.
-          setTokenSentToServer(false);
-          // Send Instance ID token to app server.
-          sendTokenToServer(refreshedToken);
-          // ...
-        })
-        .catch(function(err) {
-          console.log('Unable to retrieve refreshed token ', err);
-          showToken('Unable to retrieve refreshed token ', err);
-        });
-      });*/
+const messaging = firebase.messaging();
+//const database = firebase.database();
+messaging.requestPermission()
+  .then(function() {
+    console.log('Notification permission granted.');
+    // TODO(developer): Retrieve an Instance ID token for use with FCM.
+    // ...
+    return messaging.getToken();
+  })
+  .then(function(token) {
+    console.log(token);
+    firebase.database().ref('Other/token').set({
+      token: token
+    });
+    //currentToken = token
+  })
+  .catch(function(err) {
+    console.log('Unable to get permission to notify.', err);
+  });
+/*.then(function(currentToken) {
+  firebase.database().ref('users/' + userId).set({
+    user: name,
+    token: token
+});*/
+messaging.onMessage(function(payload) {
+  console.log('onMessage: ', payload);
+});  
+  

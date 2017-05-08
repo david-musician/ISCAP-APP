@@ -1,6 +1,9 @@
 <ion-view view-title="Announcements">
   <ion-content class="padding">
-    <a href="#/iscap/announcements/announcement-create" class="button button-balanced">Create Announcement</a>
+    <form ng-submit="addAnnouncement()">
+        <button type="submit"  class="button button-balanced">Create Announcement</button>
+    </form>
+    <!--<a href="#/iscap/announcements/announcement-create">Create Announcement</a>-->
     <br><br>
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
@@ -34,6 +37,10 @@
       </ion-item>
     </ion-list>
     </div>
+    <form ng-submit="getAnnouncements()">
+        <button type="submit"  class="button button-balanced">Retrieve Announcements</button>
+    </form>
+    
     <ion-footer>
       <ion-toolbar>
         <ion-title>

@@ -1,13 +1,14 @@
  summary::-webkit-details-marker {
  color: black;
- font-size: 125%;
+ font-size: 80%;
  margin-right: 2px;
 }
 summary:focus {
 	outline-style: none;
 }
 article > details > summary {
-	font-size: 28px;
+	font-size: 20px;
+	line-height: 1;
 	margin-top: 16px;
 }
 details > p {

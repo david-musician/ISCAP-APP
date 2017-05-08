@@ -20,3 +20,13 @@ html, body {
     margin-right: auto;
     display: block;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.alert {
+    text-align: center;
+    background-color: #c9ffb8;
+    color: #477738;
+}

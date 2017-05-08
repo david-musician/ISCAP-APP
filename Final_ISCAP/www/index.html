@@ -17,13 +17,6 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-    
-    <!-- bluebird polyfill -->
-    <script src="lib/bluebird.min.js"></script>  
     
     <!-- STYLESHEETS -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -35,12 +28,15 @@
     <link href="views/menu/menu-style.css" rel="stylesheet">
 
     <!-- Google Maps API key (REMOVE THIS!!!!): AIzaSyBr_g9mus7VHd0EE1IW5FZPMqNvY3JbdJw -->
-
+    
+    <!-- bluebird polyfill -->
+    <script src="lib/bluebird.min.js"></script>  
+    
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
     
     <!-- Load Calendar Dependencies  -->
-    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css">
     <!-- jquery, moment, and angular have to get included before fullcalendar -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
@@ -55,6 +51,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script>
       // Initialize Firebase
+      /* global firebase */
       var config = {
         apiKey: "AIzaSyCfRGNlNEjM-iodzW_FCLryp1UJfAeaz4g",
         authDomain: "iscap-2127e.firebaseapp.com",
@@ -64,6 +61,22 @@
         messagingSenderId: "802032967576"
       };
       firebase.initializeApp(config);
+      /*
+      firebase.auth().onAuthStateChanged((user) => {
+
+          if (!user) {
+              console.log("not login");
+              this.rootPage = Login;
+
+
+          } else {
+              console.log("login");
+              this.rootPage = HomePage;
+
+          }
+
+      });
+      */
     </script>
     
     <!-- FirebaseUI --
@@ -89,16 +102,7 @@
     <script src="js/services.js"></script>
     <script src="views/calendar/calendar.js"></script>
     
-    <!--
-    <script src="views/account/accountCtrl.js"></script>
-    <script src="views/announcements/announcementsCtrl.js"></script>
-    <script src="views/directory/directoryCtrl.js"></script>
-    <script src="views/calendar/calendarCtrl.js"></script>
-    <script src="views/"></script>
-    -->
-    
     <!-- Google Maps API -->
-    
     <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>-->
   </head>
 

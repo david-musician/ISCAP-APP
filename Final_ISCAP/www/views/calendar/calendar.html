@@ -1,9 +1,9 @@
-<ion-view view-title="Events">
+<ion-view view-title="Calendar">
     <ion-content class="padding">
         <a href="http://breimer.sienacs.com/#schedule">Look here for reference</a>
         <a href="http://csbapp.uncw.edu/edSig/agenda/daily.aspx">Actual schedule</a>
-        <br>
-
+        <br><br>
+        
         <!--Search Bar-->
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
@@ -15,11 +15,13 @@
             <div class="well">
 
                 <br>
-                
+                    
                 <div class="btn-group calTools">
                     <button type="button"
-                            class="btn btn-primary"
+                            class="button button-balanced"
                             ng-click="addEvent()"> Add Event</button>
+                    <button type="button"
+                            class="button button-balanced"> Save Event</button>
                 </div>
 
                 <!--list events that are requested in the search bar-->

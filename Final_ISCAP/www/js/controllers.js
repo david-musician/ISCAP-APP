@@ -1,7 +1,7 @@
 /* global angular firebase */
 angular.module('ISCAP.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicNavBarDelegate, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicNavBarDelegate, $http, $ionicPush, $location) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -10,10 +10,12 @@ angular.module('ISCAP.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
+  /* BEGIN LOGIN */
   // Form data for the login modal
-  $scope.loginData = {};
-
-  $scope.username = "Person";
+  $scope.loginData = {
+    username: "username@example.com",
+    password: "********"
+  };
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('views/login/login.html', {
@@ -22,91 +24,82 @@ angular.module('ISCAP.controllers', [])
     $scope.modal = modal;
   });
 
-  // Triggered in the login modal to close it
+  // Login Modal not needed as it is its own view now
+  /* Triggered in the login modal to close it
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
   
-  
-  $scope.pushNotification = function() {
-     $http({
-            url:'https://fcm.googleapis.com/fcm/send/segments?appkey=AAAAfkKjcz0:APA91bE-lHMab644-_TJeVgLlyprarA_I_MhCy9XnfCbhF9J5ue8G3z_RSHi3Xyzj3lw0j65iI7-F4TPQiIfD0DO96_87OzEv19fwukDV-IvYI9SsNwwUKbKmpCgQshe7qzqHL-Bfg_c',
-            
-            method:'POST',
-            data:{"status": "It works"},
-            headers:{'Content-Type': 'application/json', 'Auth_Token': 'fKHVi_xWWm0:APA91bEP6PlLBKgpBemigHSiVsHsTmGmQFDjkKpfzpazyaSpelJSW2p62Im8_jLIT35FoZgYzTck6LIqKFaAt-_PHcComchMdi9wWRfFefi1TmfVK7ABlFxZPiQWiu6lOUeJgp5GTDB9'}
-        }).success(function(data){
-            console.log(data)
-            alert("Success");
-        });
-
-  };
-  
-
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
   };
+  */
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    firebase.auth().signInWithEmailAndPassword($scope.loginData.username, $scope.loginData.password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode + ", " + errorMessage);
+      // ...
+    });
+    $scope.pushNotification();
   };
   
-  $ionicNavBarDelegate.showBackButton(false);
+  $scope.doSignup = function() {
+    firebase.auth().createUserWithEmailAndPassword($scope.loginData.username, $scope.loginData.password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode + ", " + errorMessage);
+      // ...
+    });
+  };
   
-  // Redirect the use once logged in
-  /*
-  $scope.redirect = function() {
+  $scope.logout = function(){
+    firebase.auth().signOut().then(function() {
+      console.log("User signed out");
+      $scope.redirectLogout();
+    }).catch(function(error) {
+      console.log(error);
+    });
+  };
+  
+  // Redirect the user once logged out
+  $scope.redirectLogout = function() {
     try {
-      $window.location.href = 'views/welcome.html';
-      console.log("User is logged in!");
+      $location.path('views/login/login.html');
+      console.log("User is logged out");
     } catch(err) {
       console.log(err);
     }
   };
-  */
+  /* END LOGIN */
+
+  /* Push Notifications */
+  $scope.pushNotification = function() {
+   $http({
+          url:'https://fcm.googleapis.com/fcm/send/segments?appkey=AAAAfkKjcz0:APA91bE-lHMab644-_TJeVgLlyprarA_I_MhCy9XnfCbhF9J5ue8G3z_RSHi3Xyzj3lw0j65iI7-F4TPQiIfD0DO96_87OzEv19fwukDV-IvYI9SsNwwUKbKmpCgQshe7qzqHL-Bfg_c',
+          
+          method:'POST',
+          data:{"status": "It works"},
+          headers:{'Content-Type': 'application/json', 'Auth_Token': 'fKHVi_xWWm0:APA91bEP6PlLBKgpBemigHSiVsHsTmGmQFDjkKpfzpazyaSpelJSW2p62Im8_jLIT35FoZgYzTck6LIqKFaAt-_PHcComchMdi9wWRfFefi1TmfVK7ABlFxZPiQWiu6lOUeJgp5GTDB9'}
+      }).success(function(data){
+          console.log(data);
+          alert("Success");
+      });
+  };
+  
+  /* Do not show the back button on the Welcome page */
+  $ionicNavBarDelegate.showBackButton(false);
 })
 
 /* BEGIN CONTROLLERS */
 
-/* Login controller, currently broken
-.controller('LoginCtrl', function($scope, $http, $log, $state) {
-
-  $scope.login = function() {
-    
-    
-    $state.go("welcome");
-    /*
-
-    var postData = {
-
-      "username": $scope.username,
-      "password": $scope.password
-    };
-
-    $http.post('#/iscap/welcome', postData)
-      .success(function(data) {
-        console.log("SUCCESS");
-        console.log("Username: " + $scope.username + "   -   Password: " + $scope.password);
-        $location.path("iscap/welcome");
-      })
-      .error(function(data) {
-        console.log("ERROR");
-      });
-      * /
-
-  };
-})
-*/
-
-.controller("SampleCtrl", function($scope, $firebaseArray) {
+/*.controller("SampleCtrl", function($scope, $firebaseArray) {
   /* version 1, simple call from database
   var ref = firebase.database().ref();
   // download the data into a local object
@@ -130,20 +123,27 @@ angular.module('ISCAP.controllers', [])
   $scope.messages = $firebaseArray(ref);
   */
   
-  var ref = firebase.database().ref().child("messages");
+  /*
+  var ref = firebase.database().ref('Other/Other');
   // create a synchronized array
   $scope.messages = $firebaseArray(ref);
   // add new items to the array
   // the message is automatically added to our Firebase database!
   $scope.addMessage = function() {
     $scope.messages.$add({
-      text: $scope.newMessageText
+      text: $scope.newMessageText,
     });
+    
+    firebase.database().ref('Other/Other').push({
+      announcement: "Hello World"
+    });
+    
+    
   };
   // click on `index.html` above to see $remove() and $save() in action
-})
+})*/
 
-.controller('SessionsCtrl', function($scope) {
+/*.controller('SessionsCtrl', function($scope) {
   $scope.sessions = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -155,9 +155,9 @@ angular.module('ISCAP.controllers', [])
 })
 
 .controller('SessionsCtrl', function($scope, $stateParams) {
-})
+})*/
 
-.controller('AnnouncementsCtrl', function($scope, Announcements) {
+.controller('AnnouncementsCtrl', function($scope, Announcements, $firebaseArray) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -169,6 +169,32 @@ angular.module('ISCAP.controllers', [])
   $scope.announcements = Announcements.all();
   $scope.remove = function(announcement) {
     Announcements.remove(announcement);
+  };
+  
+  $scope.addAnnouncement = function() {
+    
+    $scope.date = new Date().toString();
+    
+    firebase.database().ref('Other/Announcement').push({
+      title: "Announcement Title",
+      category: "Category",
+      dateTime: $scope.date,
+      link: "link",
+      text: "Hello World",
+      photo: ""
+    });
+    console.log("Announcement created!");
+  };
+  
+  $scope.getAnnouncements = function() {
+    
+    var db = firebase.database();
+    var ref = db.ref('Other/Announcement');
+    ref.on("value", function(snapshot) {
+      console.log(snapshot.val());
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
   };
 })
 

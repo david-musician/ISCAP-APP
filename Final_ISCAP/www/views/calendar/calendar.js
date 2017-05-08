@@ -118,6 +118,32 @@ calendarDemoApp.controller('CalendarController',
                 end: new Date(y, m, 29),
                 className: ['openSesame']
             });
+            
+            $scope.date = new Date().toString();
+            
+            firebase.database().ref('Schedule').push({
+                eventType: "",
+                mealType: "Breakfast",
+                startTime: "00:00:00",
+                endTime: "00:00:00",
+                room: "CC205",
+                chair: "Mickey Mouse",
+                subjectArea: "",
+                eventTitle: "The Land Before Twitter",
+                date: $scope.date,
+                Presenter: [{
+                    firstName: "",
+                    lastName: "",
+                    affiliation: ""
+                }, {
+                    firstName: "",
+                    lastName: "",
+                    affiliation: ""
+                }],
+                customLabel: "Board Meeting",
+                note: ""
+            });
+            console.log("Event created!");
         };
         /* remove event */
         $scope.remove = function(index) {

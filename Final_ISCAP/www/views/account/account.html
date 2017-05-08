@@ -1,18 +1,22 @@
 <ion-view view-title="My Account">
   <ion-content class="padding">
-    <p>insert profile picture and stuff here</p>
-    <img ng-src="{{settings.pfp}}" alt="This is a picture">
+    <a href="#">
+      <img src="img/profile-icon.png" class="center" width="64" ng-src="{{settings.pfp}}" alt="This is a picture">
+    </a>
+    <p class="text-center"><b>Email:</b> {{loginData.username}} <a href="#"><small>[change]</small></a></p>
+    <p class="text-center"><b>Password:</b> &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;
+    <!-- Do ng-show and ng-hide divs to show and hide passwords -->
+    <a href="#"><small>[show]</small></a>&nbsp;<a href="#"><small>[change]</small></a></p>
     <ion-list>
       <ion-toggle  ng-model="settings.enableNotifications">
           Enable Notifications
       </ion-toggle>
       <ion-toggle  ng-model="settings.enableBio">
-          Show Biography
+        Show Bio
       </ion-toggle>
-    	<label class="item item-input item-stacked-label">
-  	    <textarea name="bio" id="bio-textarea" 
-            			ng-model="settings.bio">
-      	</textarea>
+    	<label class="item item-input">
+        <span class="input-label">Bio:</span>
+    	  <textarea name="bio" id="bio-textarea" ng-model="settings.bio"></textarea>
       </label>
     </ion-list>
     <ion-footer>
