@@ -1,29 +1,55 @@
 <ion-view view-title="Announcements">
   <ion-content class="padding">
-    <form ng-submit="addAnnouncement()">
-        <button type="submit"  class="button button-balanced">Create Announcement</button>
-    </form>
+    <ion-list>
+      <ion-item ng-repeat="item in items" class="item item-text-wrap">
+        <div ng-class="isItemShown(item) ? 'item-expand active' : 'item-expand inactive'">
+          <form ng-submit="addAnnouncement()">
+            <br>
+            <label class="item item-input">
+              <span class="input-label">Title</span>
+              <input type="text" ng-model="announcement.announcementTitle">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Announcement</span>
+              <input type="text" ng-model="announcement.text">
+            </label>
+            <br><br>
+            <button type="submit"  class="button button-balanced">Create Announcement</button>
+            <br><br>
+          </form>
+          <br>
+        </div>
+        <div ng-click="toggleItem(item)" class="item-expand-footer">
+          <i ng-class="isItemShown(item) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i> {{ isItemShown(item) ? 'Cancel' : 'Create Announcement' }}
+        </div>
+      </ion-item>
+    </ion-list>
+    <div class="padding center announcement-created">
+      <span class="announcement-created center" ng-show="messageSuccess">
+        <br>
+        {{announcementCreated}}
+      </span>
+    </div>
     <!--<a href="#/iscap/announcements/announcement-create">Create Announcement</a>-->
-    <br><br>
+    <br>
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
       <input type="search" placeholder="Search">
     </label>
     <br>
     <div class="list">
-      <!--
-      <a href="#/iscap/thread" class="item item-icon-left">
-        <i class="icon ion-document-text"></i> Announcement!
-      </a>
-      <a href="#/iscap/thread" class="item item-icon-left">
-        <i class="icon ion-document-text"></i> Announcement!
-      </a>
-      <a href="#/iscap/thread" class="item item-icon-left">
-        <i class="icon ion-document-text"></i> Announcement!
-      </a>
-      <a href="#/iscap/thread" class="item item-icon-left">
-        <i class="icon ion-document-text"></i> Announcement!
-      </a>-->
+      <ion-list>
+        <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="announcement in announcementData | orderBy:'timestamp':true" type="item-text-wrap" href="#/iscap/announcements/{{announcement.id}}">
+          <img ng-src="{{announcement.face}}">
+          <h2>{{announcement.name}}</h2>
+          <p>{{announcement.text}}</p>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+  
+          <ion-option-button class="button-assertive" ng-click="remove(announcement)">
+            Delete
+          </ion-option-button>
+        </ion-item>
+      </ion-list>
       <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="announcement in announcements" type="item-text-wrap" href="#/iscap/announcements/{{announcement.id}}">
         <img ng-src="{{announcement.face}}">
@@ -37,10 +63,11 @@
       </ion-item>
     </ion-list>
     </div>
+    <!--
     <form ng-submit="getAnnouncements()">
         <button type="submit"  class="button button-balanced">Retrieve Announcements</button>
     </form>
-    
+    -->
     <ion-footer>
       <ion-toolbar>
         <ion-title>

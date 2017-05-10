@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular firebase */
 angular.module('ISCAP.services', [])
 
 /* Authentication factory, stored in local storage
@@ -21,10 +21,41 @@ angular.module('ISCAP.services', [])
   });
 })
 */
+.factory('myAnnouncements', function($firebaseArray) {
+  var announcementData = [{}];
+  
+  var db = firebase.database();
+  var ref = db.ref('Other/Announcement');
+  ref.on("value", function(snapshot) {
+    console.log(snapshot.val());
+    announcementData = snapshot.val();
+    console.log(announcementData);
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+  
+  return {
+    all: function() {
+      console.log(announcementData);
+      return announcementData;
+    },
+    remove: function(newAnnouncement) {
+      announcementData.splice(announcementData.indexOf(newAnnouncement), 1);
+    },
+    get: function(newAnnouncementId) {
+      for (var i = 0; i < announcementData.length; i++) {
+        if (announcementData[i].id === parseInt(newAnnouncementId)) {
+          return announcementData[i];
+        }
+      }
+      return null;
+    }
+  };
+})
 
 .factory('Announcements', function() {
   // Might use a resource here that returns a JSON array
-
+  
   // Test data
   var announcements = [{
     id: 0,
@@ -52,7 +83,7 @@ angular.module('ISCAP.services', [])
     lastText: 'This is wicked good ice cream.',
     face: 'img/mike.png'
   }];
-
+  
   return {
     all: function() {
       return announcements;
@@ -103,6 +134,12 @@ angular.module('ISCAP.services', [])
     description: 'Chairman',
     biography: 'I Love ice cream',
     face: 'img/mike.png'
+  },{
+    id: 5,
+    name: 'Chair Person',
+    description: 'Chairman',
+    biography: 'I am simply a chariperson',
+    face: 'img/profile-icon.png'
   }];
 
   return {

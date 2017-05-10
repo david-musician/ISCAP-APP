@@ -143,15 +143,6 @@ angular.module('ISCAP', ['ionic', 'ISCAP.controllers', 'ISCAP.services', 'fireba
       }
     }
   })
-  .state('iscap.announcement-create', {
-    url: '/announcements/announcement-create',
-    views: {
-      'menuContent': {
-        templateUrl: 'views/announcements/announcement-create.html'
-        //controller: 'AnnouncementDetailCtrl'
-      }
-    }
-  })
   
   .state('iscap.test', {
     url: '/test',

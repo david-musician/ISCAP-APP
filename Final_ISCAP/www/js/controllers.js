@@ -157,7 +157,7 @@ angular.module('ISCAP.controllers', [])
 .controller('SessionsCtrl', function($scope, $stateParams) {
 })*/
 
-.controller('AnnouncementsCtrl', function($scope, Announcements, $firebaseArray) {
+.controller('AnnouncementsCtrl', function($scope, Announcements, myAnnouncements, $firebaseArray, $timeout) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -165,25 +165,101 @@ angular.module('ISCAP.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
+  
   $scope.announcements = Announcements.all();
   $scope.remove = function(announcement) {
     Announcements.remove(announcement);
   };
   
+  $scope.messageSuccess = false;
+  $scope.announcementCreated = "Announcement created successfully!";
+  $scope.showCreateForm = false;
+  $scope.announcementData = [];
+  
+  $scope.date = new Date().toString();
+  
+  $scope.announcement = {
+    id: "",
+    announcementTitle: "",
+    name: 'Chair Person',
+    date: $scope.date,
+    category: "Category",
+    link: "http://iscap.info/",
+    text: "",
+    face: "../img/profile-icon.png"
+  };
+  
+  /*
+  $scope.showFormToggle = function () {
+    if ($scope.showCreateForm === true) {
+      $scope.showCreateForm = false;
+      console.log("showCreateForm: " + $scope.showCreateForm);
+    } else {
+      $scope.showCreateForm = true;
+      console.log("showCreateForm: " + $scope.showCreateForm);
+    }
+  };
+  */
+  
+  $scope.items = [{
+      title: '1',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    }];
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleItem = function(item) {
+    if ($scope.isItemShown(item)) {
+      $scope.shownItem = null;
+    } else {
+      $scope.shownItem = item;
+    }
+  };
+  $scope.isItemShown = function(item) {
+    return $scope.shownItem === item;
+  };
+  
   $scope.addAnnouncement = function() {
-    
     $scope.date = new Date().toString();
+    $scope.timestamp = Math.round((new Date()).getTime() / 1000);
     
-    firebase.database().ref('Other/Announcement').push({
-      title: "Announcement Title",
-      category: "Category",
-      dateTime: $scope.date,
-      link: "link",
-      text: "Hello World",
-      photo: ""
-    });
-    console.log("Announcement created!");
+    // http://stackoverflow.com/questions/38768576/in-firebase-when-using-push-how-do-i-get-the-unique-id-and-store-in-my-databas
+    // https://firebase.google.com/docs/database/web/read-and-write
+    var myRef = firebase.database().ref('Other/Announcement');
+    var key = myRef.push().key;
+    
+    var newData = {
+      id: key,
+      timestamp: $scope.timestamp,
+      announcmentTitle: $scope.announcement.announcementTitle,
+      name: $scope.announcement.name,
+      date: $scope.announcement.date,
+      category: $scope.announcement.category,
+      link: $scope.announcement.link,
+      text: $scope.announcement.text,
+      face: $scope.announcement.face,
+    };
+    
+    try {
+      myRef.push(newData);
+      console.log("Announcement created!");
+      $scope.twasCreated();
+      $timeout(function() {
+        $scope.twasCreated();
+      }, 3000);
+    } catch(err) {
+      console.log(err);
+    }
+    $scope.toggleItem();
+  };
+  
+  $scope.twasCreated = function () {
+    if ($scope.messageSuccess === true){
+      $scope.messageSuccess = false;
+    } else {
+      $scope.messageSuccess = true;
+    }
   };
   
   $scope.getAnnouncements = function() {
@@ -192,14 +268,21 @@ angular.module('ISCAP.controllers', [])
     var ref = db.ref('Other/Announcement');
     ref.on("value", function(snapshot) {
       console.log(snapshot.val());
+      $scope.announcementData = snapshot.val();
+      //console.log($scope.announcementData);
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
   };
+  
+  $scope.myAnnouncements = myAnnouncements.all();
+  
+  $scope.getAnnouncements();
 })
 
-.controller('AnnouncementDetailCtrl', function($scope, $stateParams, Announcements) {
+.controller('AnnouncementDetailCtrl', function($scope, $stateParams, Announcements, myAnnouncements) {
   $scope.announcement = Announcements.get($stateParams.announcementId);
+  $scope.myAnnouncement = myAnnouncements.get($stateParams.announcementId);
 })
 
 /* Begin Directory */
